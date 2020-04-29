@@ -1,0 +1,130 @@
+<?php require('includes/header.php'); ?>
+
+<!-- main body  -->
+    <main class="product-container">
+      <aside class="search-sidebar">
+        <form action="" method="post">
+          <label for="">Catogrize</label>
+          <select name="cat" multiple>
+            <option value="MakerBot">MakerBot Replicator </option>
+            <option value="Ultimaker">Ultimaker 2 Extended</option>
+            <option value="Monoprice">Monoprice Select Mini</option>
+            <option value="XYZprinting" selected
+              >XYZprinting Da Vinci 1.0</option
+            >
+          </select>
+          <label for="price">Price</label>
+          <input type="range" name="price" id="" min="0" max="2000" />
+          <label for="rating">Rating</label>
+          <label for="onestar">*****</label>
+          <input type="radio" name="onestar" id="" />
+          <label for="twostars">*****</label>
+          <input type="radio" name="twostars" id="" />
+          <label for="threestars">*****</label>
+          <input type="radio" name="threestars" id="" />
+          <label for="fourstars">*****</label>
+          <input type="radio" name="fourstars" id="" />
+          <label for="fivestars">*****</label>
+
+          <input type="radio" name="fivestars" id="" />
+
+          <input type="submit" value="valider" />
+        </form>
+      </aside>
+      <section class="prod-container">
+        <article class="promo">
+          <h2 class="title">PROMO</h2>
+        </article>
+        <h2 class="mini-title">All Products</h2>
+        <section class="all-products">
+          <article class="product-item">
+            <img src="./img/noimage.png" alt="" />
+            <h3>title1</h3>
+            <p>price00001</p>
+          </article>
+          <article class="product-item">
+            <img src="./img/noimage.png" alt="" />
+            <h3>title2</h3>
+            <p>price00002</p>
+          </article>
+          <article class="product-item">
+            <img src="./img/noimage.png" alt="" />
+            <h3>title3</h3>
+            <p>price00003</p>
+          </article>
+          <article class="product-item">
+            <img src="./img/noimage.png" alt="" />
+            <h3>title4</h3>
+            <p>price00004</p>
+          </article>
+          <article class="product-item">
+            <img src="./img/noimage.png" alt="" />
+
+            <h3>title5</h3>
+            <p>price00005</p>
+          </article>
+          <article class="product-item">
+            <img src="./img/noimage.png" alt="" />
+
+            <h3>title6</h3>
+            <p>price00006</p>
+          </article>
+          <article class="product-item">
+            <img src="./img/noimage.png" alt="" />
+
+            <h3>title7</h3>
+            <p>price00007</p>
+          </article>
+          <article class="product-item">
+            <img src="./img/noimage.png" alt="" />
+
+            <h3>title8</h3>
+            <p>price00008</p>
+          </article>
+          <article class="product-item">
+            <img src="./img/noimage.png" alt="" />
+
+            <h3>title9</h3>
+            <p>price00009</p>
+          </article>
+          <article class="product-item">
+            <img src="./img/noimage.png" alt="" />
+
+            <h3>title10</h3>
+            <p>price000010</p>
+          </article>
+          <article class="product-item">
+            <img src="./img/noimage.png" alt="" />
+
+            <h3>title11</h3>
+            <p>price000011</p>
+          </article>
+          <article class="product-item">
+            <img src="./img/noimage.png" alt="" />
+
+            <h3>title12</h3>
+            <p>price000012</p>
+          </article>
+          <article class="product-item">
+            <img src="./img/noimage.png" alt="" />
+
+            <h3>title13</h3>
+            <p>price000013</p>
+          </article>
+          <article class="product-item">
+            <img src="./img/noimage.png" alt="" />
+
+            <h3>title14</h3>
+            <p>price000014</p>
+          </article>
+          <article class="product-item">
+            <img src="./img/noimage.png" alt="" />
+
+            <h3>title15</h3>
+            <p>price000015</p>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
