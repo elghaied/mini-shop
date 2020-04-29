@@ -1,4 +1,6 @@
-<?php require('includes/header.php'); ?>
+<?php require('includes/header.php');
+
+?>
 
 <!-- main body  -->
     <main class="product-container">
@@ -37,94 +39,15 @@
         </article>
         <h2 class="mini-title">All Products</h2>
         <section class="all-products">
-          <article class="product-item">
-            <img src="./img/noimage.png" alt="" />
-            <h3>title1</h3>
-            <p>price00001</p>
-          </article>
-          <article class="product-item">
-            <img src="./img/noimage.png" alt="" />
-            <h3>title2</h3>
-            <p>price00002</p>
-          </article>
-          <article class="product-item">
-            <img src="./img/noimage.png" alt="" />
-            <h3>title3</h3>
-            <p>price00003</p>
-          </article>
-          <article class="product-item">
-            <img src="./img/noimage.png" alt="" />
-            <h3>title4</h3>
-            <p>price00004</p>
-          </article>
-          <article class="product-item">
-            <img src="./img/noimage.png" alt="" />
-
-            <h3>title5</h3>
-            <p>price00005</p>
-          </article>
-          <article class="product-item">
-            <img src="./img/noimage.png" alt="" />
-
-            <h3>title6</h3>
-            <p>price00006</p>
-          </article>
-          <article class="product-item">
-            <img src="./img/noimage.png" alt="" />
-
-            <h3>title7</h3>
-            <p>price00007</p>
-          </article>
-          <article class="product-item">
-            <img src="./img/noimage.png" alt="" />
-
-            <h3>title8</h3>
-            <p>price00008</p>
-          </article>
-          <article class="product-item">
-            <img src="./img/noimage.png" alt="" />
-
-            <h3>title9</h3>
-            <p>price00009</p>
-          </article>
-          <article class="product-item">
-            <img src="./img/noimage.png" alt="" />
-
-            <h3>title10</h3>
-            <p>price000010</p>
-          </article>
-          <article class="product-item">
-            <img src="./img/noimage.png" alt="" />
-
-            <h3>title11</h3>
-            <p>price000011</p>
-          </article>
-          <article class="product-item">
-            <img src="./img/noimage.png" alt="" />
-
-            <h3>title12</h3>
-            <p>price000012</p>
-          </article>
-          <article class="product-item">
-            <img src="./img/noimage.png" alt="" />
-
-            <h3>title13</h3>
-            <p>price000013</p>
-          </article>
-          <article class="product-item">
-            <img src="./img/noimage.png" alt="" />
-
-            <h3>title14</h3>
-            <p>price000014</p>
-          </article>
-          <article class="product-item">
-            <img src="./img/noimage.png" alt="" />
-
-            <h3>title15</h3>
-            <p>price000015</p>
-          </article>
+        
+         <?php  $db = new Bdd(); 
+          $royann = new Control($db->bdd);
+          $royann->getRayon($_SESSION['royan']);
+          ?>
         </section>
       </section>
     </main>
+    <?php/* include("includes/footer.php");*/ ?>
+
   </body>
 </html>

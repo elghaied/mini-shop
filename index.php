@@ -79,19 +79,19 @@
     <ul class="icon-container">
       <li class="icon">
         <a href="http://">
-          <img src="./img/printer.png" alt="printer" />
+          <img src="assets/img/printer.png" alt="printer" />
           <h3>3d printers</h3>
         </a>
       </li>
       <li class="icon">
         <a href="http://">
-          <img src="./img/wire.png" alt="wire" />
+          <img src="assets/img/wire.png" alt="wire" />
           <h3>wire</h3>
         </a>
       </li>
       <li class="icon">
         <a href="http://">
-          <img src="./img/concrete.png" alt="supplies" />
+          <img src="assets/img/concrete.png" alt="supplies" />
           <h3>supplies</h3>
         </a>
       </li>
@@ -101,13 +101,6 @@
       <img src="./img/model.png" alt="modeling" />
       <h2>3d modeling</h2>
     </section>
-
-    <footer>
-      <ul class="footer-list">
-        <li>Lorem, ipsum.</li>
-        <li>Voluptatum, incidunt!</li>
-        <li>Aperiam, ipsa.</li>
-      </ul>
-    </footer>
+<?php include("includes/footer.php"); ?>
   </body>
 </html>

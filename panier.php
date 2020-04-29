@@ -87,5 +87,7 @@
         <a href="">Payer</a>
       </aside>
     </main>
+    <?php include("includes/footer.php"); ?>
+
   </body>
 </html>

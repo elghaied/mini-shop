@@ -344,3 +344,17 @@ footer {
 .item-details {
   flex: 2;
 }
+
+/* add form  */
+
+.add-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.add-form form {
+  display: flex;
+  flex-direction: column;
+}
