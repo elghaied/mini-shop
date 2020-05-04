@@ -21,7 +21,7 @@ class Cartmanager extends Bdd
 
 		////
 		if($exist){
-			$request = $this->_db->prepare("UPDATE cart SET quantity = quantity +". $myproduct->getQuantity() . ", total_price = total_price + price WHERE product_id = :id ");
+			$request = $this->_db->prepare("UPDATE cart SET quantity = quantity +". $myproduct->getQuantity() . ", total_price = total_price + price ". $myproduct->getQuantity() ." WHERE product_id = :id ");
 			$request->bindValue(':id', $myproduct->getProductId()); 
 		
 			$request->execute();

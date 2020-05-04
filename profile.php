@@ -3,22 +3,45 @@
       <aside>
         <h2>parameter</h2>
         <ul class="sidebar">
-          <li class="sidebar-links"><a href="">Adresses</a></li>
-          <li class="sidebar-links"><a href="">Historique</a></li>
-          <li class="sidebar-links"><a href="">Profile</a></li>
+          <?php if($_SESSION['privilege']=="admin"){
+
+          ?>
+          <li class="sidebar-links"><a href="?action=products">All Products</a></li>
+          <?php } ?>
+
+          <li class="sidebar-links"><a href="?action=myproducts">my Products</a></li>
+
+          <li class="sidebar-links"><a href="?action=adress">Adress</a></li>
+          <li class="sidebar-links"><a href="<?php echo basename("/profile") . PHP_EOL  ?>">Profile</a></li>
           <li class="sidebar-links"><a href="">payment methods</a></li>
         </ul>
       </aside>
       <section class="profile-items">
+
+      
         <?php 
         $selected = (int) $_SESSION['user_id'];
+        var_dump($selected);
 
-        var_dump($_SESSION['alert']);
+
+        if(isset($_GET['action'])){
+          if($_GET['action'] == "products"){
+            $porducts = new Control();
+            $porducts->getAllproducts();
+          }
+          if($_GET['action'] == "myproducts"){
+            $porducts = new Control();
+            $porducts->getMyproducts($selected);
+          }
+          if($_GET['action']=="adress"){
+            $myadress = new Addressmanager();
+            $myadress->Addressform($selected);
+          }
+        }else {
+        
         $profile = new Verifyuser();
          $user = $profile->selectuser($selected);
         
-     
-       
         ?>
         
         <form action="" method="post">
@@ -59,7 +82,7 @@
           <input type="submit" value="save" name="update-email">
         </form>
 
-        
+        <?php } ?>
         
       </section>
       

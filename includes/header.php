@@ -21,7 +21,7 @@
       <?php
     if(isset($_SESSION['username']) && $_SESSION['username']!== ""){
        
-        echo "<p class='logged'>Bienvenue  <a class='user' href=" . "'" . basename("/profile")."?user=". $_SESSION['user_id'] . PHP_EOL . "' >" . $_SESSION['username'] . "(<span class='". $_SESSION['privilege'] . "'>". $_SESSION['privilege'] . "</span>) </a>" . "</p>" ;
+        echo "<p class='logged'>Bienvenue  <a class='user' href=" . "'" . basename("/profile"). PHP_EOL . "' >" . $_SESSION['username'] . "(<span class='". $_SESSION['privilege'] . "'>". $_SESSION['privilege'] . "</span>) </a>" . "</p>" ;
         echo '<a href="deconnect.php" class="disconnect">Déconnecter</a>';
         
     }else {
@@ -32,3 +32,10 @@
       
       <a class="panier" href="<?=  basename("/panier") ; ?>">Panier</a>
     </nav>
+
+ <?php if (isset($_SESSION['alert'])) { ?>
+<div class="alert">
+<?php echo $_SESSION['alert'];
+unset($_SESSION['alert']); ?>
+</div>
+ <?php } ?>

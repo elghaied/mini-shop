@@ -17,7 +17,7 @@
           ?>
 
       </section>
-      <div class="liner"></div>
+     
       <section>
         <h2>supplies</h2>
        

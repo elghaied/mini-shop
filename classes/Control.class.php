@@ -47,6 +47,72 @@ class Control extends Bdd
 		return $royan;
 	}
 	
+	public function getAllproducts()  {
+		$royan = array();
+		
+		$request = $this->_db->query("SELECT * FROM ce_product order by id DESC ");
+		while($donnees = $request->fetch(PDO::FETCH_ASSOC)) {
+            $product = new Product($donnees);
+     
+			  
+			  echo '
+			  <div class="prods">
+			 
+			  <img src="'.  "uploads/" . basename("{$product->getImage()}") .'" alt="" class="article-image" />
+			  <div class="prod-container">
+			  <a href="'.basename("/produit?article=") . $product->getId() .PHP_EOL . '">
+				' . $product->getName() . '
+				</a>
+				<p>' . $product->getDescription() . '</p>
+				
+
+			  </div>
+			  <a href="?action=delete&product=' . $product->getId() . '" > ❌ </a>
+
+			</div> 
+			  ';
+		}
+		return $product;
+	}
+
+	public function getMyproducts($id)  {
+	
+		
+		$request = $this->_db->prepare("SELECT * FROM ce_product Where user_id=:id order by id DESC ");
+		$request->bindValue(':id', $id); 
+		$request->execute();
+		while($donnees = $request->fetch(PDO::FETCH_ASSOC)) {
+			$product = new Product($donnees);
+		
+			if($product==NULL){
+			$_SESSION['alert'] = "No content";
+			return $_SESSION['alert'];
+				
+			
+			}else {
+			
+		
+			  echo '
+			  <div class="prods">
+			 
+			  <img src="'.  "uploads/" . basename("{$product->getImage()}") .'" alt="" class="article-image" />
+			  <div class="prod-container">
+			  <a href="'.basename("/produit?article=") . $product->getId() .PHP_EOL . '">
+				' . $product->getName() . '
+				</a>
+				<p>' . $product->getDescription() . '</p>
+				
+
+			  </div>
+			  <a href="?action=delete&product=' . $product->getId() . '" > ❌ </a>
+
+			</div> 
+			  ';
+
+			
+		}
+	}return $product;
+	}
 	public function getArticle($id)  {
 			$id = (int) $id;
 			$q = $this->_db->query("SELECT * FROM `ce_product` AS `P` WHERE `P`.id=".$id);
@@ -84,13 +150,14 @@ class Control extends Bdd
 
 		public function addProduct($product)  {
 
-		$q = $this->_db->prepare("INSERT INTO `ce_product` (name,price,quantity,image,description,_actif) VALUES (:name,:price,:quantity,:image,:description,:_actif)");
+		$q = $this->_db->prepare("INSERT INTO `ce_product` (name,price,quantity,image,description,`user_id`,_actif) VALUES (:name,:price,:quantity,:image,:description,:user_id,:_actif)");
 	
 		$q->bindValue(':name', $product->getName()); 
 		$q->bindValue(':price', $product->getPrice()); 
 		$q->bindValue(':quantity', $product->getQuantity()); 
 		$q->bindValue(':description', $product->getDescription()); 
 		$q->bindValue(':image', $product->getImage()); 
+		$q->bindValue(':user_id', $product->getUser_id()); 
 		$q->bindValue(':_actif', $product->getActif()); 
 
 		$q->execute();
@@ -109,6 +176,29 @@ class Control extends Bdd
 
 
 	}
+
+
+	public function deleteprod($id){
+		$order = $this->_db->prepare("SELECT `image` FROM `ce_product` WHERE id = :id");
+		$order->bindValue(':id', $id); 
+		$order->execute();
+		$myimage = $order->fetch(PDO::FETCH_ASSOC);
+		var_dump($myimage['image']);
+	
+		$filePath = "uploads/". $myimage['image'];
+		if(file_exists($filePath)){
+			unlink($filePath);
+			$_SESSION['alert'] = "the csv has been deleted";
+		}
+		$request = $this->_db->prepare("DELETE FROM ce_product WHERE id=:id");
+		
+		$request->bindValue(':id', $id); 
+	
+		$request->execute();
+		
+	}
+	
+
 
 
 	// public function add(Personnage $perso)  {

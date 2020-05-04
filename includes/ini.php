@@ -35,7 +35,7 @@ spl_autoload_register('my_autoloader');
 
 
 if(isset($_POST['add-product'])){
-    
+    $id = $_SESSION['user_id'];
     // image 
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["image"]["name"]);
@@ -47,7 +47,7 @@ if(isset($_POST['add-product'])){
     // the connection 
 
     $connect = new Control();
-    $product = new Addproduct($_POST,$image,$category);
+    $product = new Addproduct($_POST,$image,$category,$id);
     // $product = new Product($_POST);
     
     var_dump($product);
@@ -136,5 +136,22 @@ if(isset($_POST['update-pass'])){
         $itemId = $_GET['down'];
         $deleteitem = New Cartmanager();
         $deleteitem->downquantity($itemId);
+    }
+
+    if(isset($_GET['action'])){
+        if($_GET['action']== "delete" ){
+            $prod = $_GET['product'];
+            $delet = new Control();
+            $delet->deleteprod($prod);
+        }
+    }
+
+    // ADD ADDRESS ============================
+    //=========================================
+
+    if(isset($_POST['add-adress'])){
+        $id = $_SESSION['user_id'];
+        $addingaddress = new Addressmanager();
+        $addingaddress->AddAddress($id);
     }
 ?>

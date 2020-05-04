@@ -7,6 +7,7 @@ class Product {
     private $description;
     private $price;
     private $quantity;
+    private $user_id;
     private $_actif;
    
     
@@ -44,11 +45,15 @@ public function getImage() {return $this->_image;}
 public function getDescription() {return $this->_description;}
 public function getPrice() {return $this->_price;}
 public function getQuantity(){return $this->_quantity;}
+public function getUser_id(){return $this->_user_id;}
 public function getActif(){return $this->__actif;}
 
 // SET
 public function setid($id){
     $this->_id = $id;
+}
+public function setuser_id($user_id){
+    $this->_user_id = $user_id;
 }
 public function setname($name){
     $this->_name = $name;
