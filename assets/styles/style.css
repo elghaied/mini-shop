@@ -15,6 +15,7 @@
 body {
   padding: 0;
   margin: 0;
+  height: 100vh;
   font-family: "righteousregular";
 }
 nav {
@@ -94,7 +95,7 @@ header p {
 .updates-container {
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   background-color: var(--tgrey);
 }
@@ -118,7 +119,9 @@ header p {
 }
 
 .updates-container img {
-  max-width: 6rem;
+  height: 6rem;
+  width: 6rem;
+  object-fit: cover;
 }
 
 .liner {
@@ -223,6 +226,7 @@ footer {
   grid-template-rows: 1fr;
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
+  flex-wrap: wrap;
 }
 .product-item {
   background-color: var(--tgreen);
@@ -233,8 +237,24 @@ footer {
   align-items: center;
 }
 
-/* Page de produit  */
+.product-item img {
+  height: 15rem;
+  width: 15rem;
+  object-fit: cover;
+}
 
+/* Page de produit  */
+.add-product {
+  padding: 2rem 1rem;
+  border: 1px solid black;
+  border-radius: 19%;
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  background-color: rgb(144, 57, 243);
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
 .produit-container {
   display: flex;
   justify-content: center;
@@ -316,6 +336,7 @@ footer {
 
 .panier-container {
   display: flex;
+  height: 100vh;
 }
 .panier-container aside {
   flex: 0.4;
@@ -343,6 +364,7 @@ footer {
 }
 .item-details {
   flex: 2;
+  display: grid;
 }
 
 /* add form  */
@@ -357,4 +379,75 @@ footer {
 .add-form form {
   display: flex;
   flex-direction: column;
+}
+
+/* Login */
+
+.login-body {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.login-body form {
+  background-color: rgb(211, 211, 211);
+  padding: 5rem;
+  border: 1px solid black;
+}
+.user {
+  color: white;
+  text-decoration: none;
+}
+.user:hover {
+  color: rgb(124, 82, 241);
+}
+.admin {
+  color: red;
+  text-decoration: none;
+}
+.disconnect {
+  background-color: rgb(192, 192, 192);
+  color: var(--tgreen);
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid var(--thoney);
+}
+
+/* profile */
+
+.profile-container {
+  display: flex;
+  height: 100vh;
+}
+.profile-container aside {
+  flex: 0.4;
+  background-color: var(--tgreen);
+}
+.profile-items {
+  flex: 3;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-items img {
+  max-width: 5rem;
+}
+
+.profile-items form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgb(191, 245, 125);
+  padding: 1rem;
+  width: 60%;
+}
+
+.profile-items form:nth-child(odd) {
+  background-color: rgb(131, 249, 251);
+}
+.profile-details {
+  flex: 2;
 }

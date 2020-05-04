@@ -1,4 +1,12 @@
-<?php require('includes/header.php'); ?>
+<?php require('includes/header.php');
+
+$connect = new Control();
+$myArticle = $connect->getArticle($_GET['article']);
+$myRating = $connect->getRating($_GET['article']);
+
+
+echo $_SESSION['alert'];
+?>
 
 
 <main class="produit">
@@ -6,31 +14,30 @@
 
       <article class="produit-container">
         <section>
-          <img src="./img/noimage.png" alt="" />
-          <h2>Details</h2>
-          <div class="details-list">
-            <p>Lorem, ipsum dolor.</p>
-            <p>Excepturi, enim sequi!</p>
-            <p>Itaque, numquam excepturi?</p>
-            <p>Sit, consequuntur earum.</p>
-            <p>Facilis, assumenda aliquam.</p>
-            <p>Debitis, quod iusto.</p>
-          </div>
+          <img src="<?php echo  "uploads/" . basename("{$myArticle->getImage()}"); ?>" alt="" />
+        
         </section>
         <aside>
-          <h2 class="product-title">Product Name</h2>
-          <span>⭐⭐⭐⭐⭐</span>
+          <h2 class="product-title"><?php echo $myArticle->getName(); ?></h2>
+          <span><?php if($myRating === null){ echo "0";} else{ echo $myRating->getScore(); } ?></span>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Repudiandae quibusdam enim dignissimos deleniti optio a
-            exercitationem id ratione voluptas sit non animi doloremque error,
-            ad ipsum ullam iusto aut eaque!
+          <?php echo $myArticle->getDescription(); ?>
           </p>
 
-          <p>Price: 2000$</p>
+          <p>Price: <?php echo $myArticle->getPrice(); ?>$</p>
           <p>Shipping: 15$</p>
+          
+          <form action="" method="post">
+            <input type="hidden" name="product_id" value="<?= $myArticle->getId(); ?> ">
+            <input type="hidden" name="price" value="<?= $myArticle->getPrice(); ?> ">
 
-          <a href="" class="ajouter">+ Ajouter</a>
+            <input type="hidden" name="user_id" value="<?= $_SESSION['user_id']; ?> ">
+            <p> Disponible : <?= $myArticle->getQuantity(); ?>
+            </p>
+            <input type="number" name="quantity" id="" min="1" max="<?= $myArticle->getQuantity(); ?>">
+            <input type="submit" name="addToCart" class="ajouter" value="+ Ajouter">
+          </form>
+          
         </aside>
       </article>
       <section class="comment-section">
@@ -101,5 +108,3 @@
     </main>
     <?php include("includes/footer.php"); ?>
 
-  </body>
-</html>

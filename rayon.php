@@ -38,16 +38,21 @@
           <h2 class="title">PROMO</h2>
         </article>
         <h2 class="mini-title">All Products</h2>
+
+        <a class="add-product" href="<?php echo basename("/add-product").PHP_EOL ; ?>">Add Product</a>
         <section class="all-products">
         
-         <?php  $db = new Bdd(); 
-          $royann = new Control($db->bdd);
+         <?php  
+          $royann = new Control();
           $royann->getRayon($_SESSION['royan']);
           ?>
         </section>
       </section>
     </main>
-    <?php/* include("includes/footer.php");*/ ?>
 
-  </body>
-</html>
+
+    <?php include("includes/footer.php"); 
+    
+    
+    ?>
+

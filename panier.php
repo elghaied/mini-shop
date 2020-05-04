@@ -11,83 +11,21 @@
         </ul>
       </aside>
       <section class="panier-items">
-        <article>
-          <img src="./img/noimage.png" alt="" />
-          <section class="item-details">
-            <a href="">items title</a>
-            <p>200$</p>
-          </section>
-          <section>
-            <a href="">❌</a>
-            <a href="">🖊</a>
-          </section>
-        </article>
-        <article>
-          <img src="./img/noimage.png" alt="" />
-          <section class="item-details">
-            <a href="">items title</a>
-            <p>200$</p>
-          </section>
-          <section>
-            <a href="">❌</a>
-            <a href="">🖊</a>
-          </section>
-        </article>
-        <article>
-          <img src="./img/noimage.png" alt="" />
-          <section class="item-details">
-            <a href="">items title</a>
-            <p>200$</p>
-          </section>
-          <section>
-            <a href="">❌</a>
-            <a href="">🖊</a>
-          </section>
-        </article>
-        <article>
-          <img src="./img/noimage.png" alt="" />
-          <section class="item-details">
-            <a href="">items title</a>
-            <p>200$</p>
-          </section>
-          <section>
-            <a href="">❌</a>
-            <a href="">🖊</a>
-          </section>
-        </article>
-        <article>
-          <img src="./img/noimage.png" alt="" />
-          <section class="item-details">
-            <a href="">items title</a>
-            <p>200$</p>
-          </section>
-          <section>
-            <a href="">❌</a>
-            <a href="">🖊</a>
-          </section>
-        </article>
-        <article>
-          <img src="./img/noimage.png" alt="" />
-          <section class="item-details">
-            <a href="">items title</a>
-            <p>200$</p>
-          </section>
-          <section>
-            <a href="">❌</a>
-            <a href="">🖊</a>
-          </section>
-        </article>
+        <?php 
+        $mypanier = new Cartmanager();
+        $mypanier->showcart($_SESSION['user_id']);
+
+
+        ?>
       </section>
       <aside>
-        <p>shipping : 15$</p>
-        <p>address : 2 allee guy charff . ..</p>
 
-        <p>total : 6000$</p>
+      <?php
+      $mypanier->getOrder($_SESSION['user_id']);
+       ?>
+  
 
         <a href="">Payer</a>
       </aside>
     </main>
     <?php include("includes/footer.php"); ?>
-
-  </body>
-</html>

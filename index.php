@@ -11,66 +11,21 @@
     <div class="updates-container">
       <section>
         <h2>printers</h2>
-        <article>
-          <img src="./img/noimage.png" alt="" class="article-image" />
-          <aside>
-            <h3>Laboriosam, aut natus!</h3>
-            <p>Quas totam consequatur dolor laborum labore in, maiores esse.</p>
-          </aside>
-        </article>
-        <article>
-          <img src="./img/noimage.png" alt="" class="article-image" />
-          <aside>
-            <h3>Laboriosam, aut natus!</h3>
-            <p>Quas totam consequatur dolor laborum labore in, maiores esse.</p>
-          </aside>
-        </article>
-        <article>
-          <img src="./img/noimage.png" alt="" class="article-image" />
-          <aside>
-            <h3>Laboriosam, aut natus!</h3>
-            <p>Quas totam consequatur dolor laborum labore in, maiores esse.</p>
-          </aside>
-        </article>
-        <article>
-          <img src="./img/noimage.png" alt="" class="article-image" />
-          <aside>
-            <h3>Laboriosam, aut natus!</h3>
-            <p>Quas totam consequatur dolor laborum labore in, maiores esse.</p>
-          </aside>
-        </article>
+        <?php 
+          $royann = new Control();
+          $royann->getTopTopics("printer");
+          ?>
+
       </section>
       <div class="liner"></div>
       <section>
         <h2>supplies</h2>
-        <article>
-          <img src="./img/noimage.png" alt="" class="article-image" />
-          <aside>
-            <h3>Laboriosam, aut natus!</h3>
-            <p>Quas totam consequatur dolor laborum labore in, maiores esse.</p>
-          </aside>
-        </article>
-        <article>
-          <img src="./img/noimage.png" alt="" class="article-image" />
-          <aside>
-            <h3>Laboriosam, aut natus!</h3>
-            <p>Quas totam consequatur dolor laborum labore in, maiores esse.</p>
-          </aside>
-        </article>
-        <article>
-          <img src="./img/noimage.png" alt="" class="article-image" />
-          <aside>
-            <h3>Laboriosam, aut natus!</h3>
-            <p>Quas totam consequatur dolor laborum labore in, maiores esse.</p>
-          </aside>
-        </article>
-        <article>
-          <img src="./img/noimage.png" alt="" class="article-image" />
-          <aside>
-            <h3>Laboriosam, aut natus!</h3>
-            <p>Quas totam consequatur dolor laborum labore in, maiores esse.</p>
-          </aside>
-        </article>
+       
+        <?php 
+          $royann = new Control();
+          $royann->getTopTopics("wire");
+          ?>
+
       </section>
     </div>
     <!-- icon -->
@@ -98,9 +53,7 @@
     </ul>
     <!-- 3d modeling -->
     <section class="model">
-      <img src="./img/model.png" alt="modeling" />
+      <img src="assets/img/model.png" alt="modeling" />
       <h2>3d modeling</h2>
     </section>
 <?php include("includes/footer.php"); ?>
-  </body>
-</html>

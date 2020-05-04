@@ -1,12 +1,10 @@
 <?php 
 
-class Product {
+class Category {
     private $id;
     private $name;
     private $image;
     private $description;
-    private $price;
-    private $quantity;
     private $_actif;
    
     
@@ -42,8 +40,6 @@ public function getId() { return $this->_id;}
 public function getName() {return $this->_name;}
 public function getImage() {return $this->_image;}
 public function getDescription() {return $this->_description;}
-public function getPrice() {return $this->_price;}
-public function getQuantity(){return $this->_quantity;}
 public function getActif(){return $this->__actif;}
 
 // SET
@@ -60,19 +56,9 @@ public function setdescription($description){
     $this->_description = $description;
 }
 
-public function setprice($price){
-    $this->_price = $price;
-}
-public function setquantity($quantity){
-    $this->_quantity = $quantity;
-}
-public function set_actif($actif){
-    if(!$actif){
-        $this->__actif = 0;
-    }
-    else {
-    $this->__actif = 1;
-    }
+
+public function set_actif($_actif){
+    $this->__actif = $_actif;
 }
 
 

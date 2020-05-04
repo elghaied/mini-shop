@@ -7,9 +7,9 @@ class Bdd {
     private $password;
     private $dbname;
     private $charset;
-    public $bdd;
+    protected $bdd;
     
-    public function __construct(){
+    protected function __construct(){
 
         $this->host = "localhost";
         $this->user = "root";

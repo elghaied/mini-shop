@@ -1,28 +1,116 @@
 <?php
-class Control 
+class Control extends Bdd
 {
 	private $_db; 
-
-	public function __construct($db)  {
-		$this->setDb($db);
+	
+	
+	public function __construct()  {
+		$this->setDb(parent::__construct());
 	}
 	
 	public function getRayon($cat)  {
 		$royan = array();
 		
-		$request = $this->_db->query("SELECT * FROM `ce_product` AS P JOIN `product_category` AS PC ON `P`.`id` = `PC`.`product_id` JOIN `ce_category` AS `C` ON `PC`.`category_id` = `C`.`id` WHERE `C`.`name`='$cat' ");
+		$request = $this->_db->query("SELECT `P`.`id`,`P`.`image`, `P`.`name`, `P`.`price` FROM `ce_product` AS P JOIN `product_category` AS PC ON `P`.`id` = `PC`.`product_id` JOIN `ce_category` AS `C` ON `PC`.`category_id` = `C`.`id` WHERE `C`.`name`='$cat' ");
 		while($donnees = $request->fetch(PDO::FETCH_ASSOC)) {
             $royan = new Product($donnees);
-            echo '
+			echo '<a href="'.basename("/produit?article=") . $royan->getId() .PHP_EOL . '">
               <article class="product-item">
-                <img src="' . $royan->getImage() . '" alt="" />
+                <img src="'.  "uploads/" . basename("{$royan->getImage()}") . '" alt="" />
                 <h3>' . $royan->getName() . '</h3>
                 <p> '. $royan->getPrice() . '</p>
-              </article>';
+              </article> </a>';
 		}
 		return $royan;
     }
-    
+	
+	public function getTopTopics($cat)  {
+		$royan = array();
+		
+		$request = $this->_db->query("SELECT `P`.`id`,`P`.`image`,`P`.`name`,`P`.`description` FROM `ce_product` AS P  JOIN  `product_category` AS PC ON `P`.`id` = `PC`.`product_id` JOIN `ce_category` AS `C` ON `PC`.`category_id` = `C`.`id` WHERE `C`.`name`='$cat' ORDER BY `P`.id DESC LIMIT 5 ");
+		while($donnees = $request->fetch(PDO::FETCH_ASSOC)) {
+            $royan = new Product($donnees);
+     
+			  
+			  echo '
+			  <article>
+			  <img src="'.  "uploads/" . basename("{$royan->getImage()}") .'" alt="" class="article-image" />
+			  <aside>
+			  <a href="'.basename("/produit?article=") . $royan->getId() .PHP_EOL . '">
+				' . $royan->getName() . '
+				</a>
+				<p>' . $royan->getDescription() . '</p>
+			  </aside>
+			</article> 
+			  ';
+		}
+		return $royan;
+	}
+	
+	public function getArticle($id)  {
+			$id = (int) $id;
+			$q = $this->_db->query("SELECT * FROM `ce_product` AS `P` WHERE `P`.id=".$id);
+			$donnees = $q->fetch(PDO::FETCH_ASSOC);
+			
+			return new Product($donnees);
+	}
+
+	public function getRating($id) {
+		$id = (int) $id;
+		
+		$q = $this->_db->query("SELECT floor(AVG(`R`.`score`)) AS score FROM rating AS `R` JOIN `ce_product` AS `P` ON `R`.`product_id` = `P`.`id` WHERE `P`.id=".$id);
+		$donnees = $q->fetch(PDO::FETCH_ASSOC);
+		$myRating = new Rating($donnees);
+		
+		
+		return $myRating ;
+	}
+
+	public function getCategory(){
+		$category = array();
+		
+		$request = $this->_db->query("SELECT * FROM `ce_category` ");
+		while($donnees = $request->fetch(PDO::FETCH_ASSOC)) {
+            $category = new Category($donnees);
+      
+			  echo '
+			  <option value="'. $category->getID() .'">'. $category->getName() .'</option>
+			  ';
+			 
+
+		}
+		return $category;
+	}
+
+		public function addProduct($product)  {
+
+		$q = $this->_db->prepare("INSERT INTO `ce_product` (name,price,quantity,image,description,_actif) VALUES (:name,:price,:quantity,:image,:description,:_actif)");
+	
+		$q->bindValue(':name', $product->getName()); 
+		$q->bindValue(':price', $product->getPrice()); 
+		$q->bindValue(':quantity', $product->getQuantity()); 
+		$q->bindValue(':description', $product->getDescription()); 
+		$q->bindValue(':image', $product->getImage()); 
+		$q->bindValue(':_actif', $product->getActif()); 
+
+		$q->execute();
+	
+		// adding to the relation table 
+
+		$sql = "INSERT INTO product_category (product_id,category_id) VALUES ( (select max(id) from ce_product), '{$product->getCategory()}'  )";
+		echo $sql;
+
+		$this->_db->exec($sql);
+
+		
+
+		echo "insert done ";
+		
+
+
+	}
+
+
 	// public function add(Personnage $perso)  {
 
 	// 	$q = $this->_db->prepare("INSERT INTO personnages (nom) VALUES (:nom)");
